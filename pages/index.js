@@ -4,7 +4,7 @@ import {CssBaseline, Container, Grid} from '@material-ui/core';
 import Header from '../components/Header/Header';
 import Body from '../components/Body/Body';
 
-const Home = () => {
+const Home = ({foods}) => {
   return (
     <>
       <Head>
@@ -13,7 +13,6 @@ const Home = () => {
       </Head>
       <CssBaseline />
       <Container maxWidth="lg">
-        {/* <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} /> */}
         <Grid
           container
           justify="center"
@@ -23,12 +22,19 @@ const Home = () => {
             <Header />
           </Grid>
           <Grid item lg={12}>
-            <Body />
+            <Body foods={foods} />
           </Grid>
         </Grid>
       </Container>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  const res = await fetch(`${process.env.SAPO_API_HOST}/foods`);
+  const foods = await res.json();
+
+  return { props: { foods } }
 }
 
 export default Home;
