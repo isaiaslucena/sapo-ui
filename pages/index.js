@@ -1,10 +1,12 @@
 import Head from 'next/head'
-import React from 'react';
+import React, { useState } from 'react';
 import {CssBaseline, Container, Grid} from '@material-ui/core';
 import Header from '../components/Header/Header';
 import Body from '../components/Body/Body';
 
-const Home = ({foods}) => {
+const Home = ({ foods }) => {
+  const [currentFoods, setCurrentFoods] = useState(foods);
+
   return (
     <>
       <Head>
@@ -19,10 +21,10 @@ const Home = ({foods}) => {
           alignItems="center"
         >
           <Grid item lg={12}>
-            <Header />
+            <Header setCurrentFoods={setCurrentFoods} />
           </Grid>
           <Grid item lg={12}>
-            <Body foods={foods} />
+            <Body foods={currentFoods} />
           </Grid>
         </Grid>
       </Container>
@@ -31,7 +33,7 @@ const Home = ({foods}) => {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.SAPO_API_HOST}/foods`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SAPO_API_HOST}/foods`);
   const foods = await res.json();
 
   return { props: { foods } }
