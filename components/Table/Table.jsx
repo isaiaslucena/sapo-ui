@@ -10,11 +10,16 @@ import Paper from "@material-ui/core/Paper";
 
 const FoodsTable = ({ foods }) => {
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="customized table">
+    <TableContainer
+      component={Paper}
+      elevation={0}
+      variant="outlined"
+      style={{ marginBottom: 60 }}
+    >
+      <Table aria-label="food table">
         <TableHead>
           <TableRow style={{ backgroundColor: "#eff2f7" }}>
-            <TableCell>Nome</TableCell>
+            <TableCell align="center">Nome</TableCell>
             <TableCell align="center">Quantidade</TableCell>
             <TableCell align="center">Proteínas</TableCell>
             <TableCell align="center">Carboidratos</TableCell>
@@ -25,15 +30,15 @@ const FoodsTable = ({ foods }) => {
           {foods.map((food, index) => (
             <TableRow
               key={`foodRow${index}`}
-              style={ index % 2 ? { backgroundColor: "#eff2f7" } : null}
+              style={index % 2 ? { backgroundColor: "#eff2f7" } : null}
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" align="center">
                 {food.name}
               </TableCell>
-              <TableCell align="center">{food.quantity}</TableCell>
-              <TableCell align="center">{food.protein}</TableCell>
-              <TableCell align="center">{food.carbohydrate}</TableCell>
-              <TableCell align="center">{food.fat}</TableCell>
+              <TableCell align="center">{food.quantity}g</TableCell>
+              <TableCell align="center">{food.protein}g</TableCell>
+              <TableCell align="center">{food.carbohydrate}g</TableCell>
+              <TableCell align="center">{food.fat}g</TableCell>
             </TableRow>
           ))}
         </TableBody>
