@@ -22,12 +22,11 @@ const Body = ({ foods }) => (
           padding: "80px 10px 20px 10px",
         }}
       >
-        Bem-vindo ao
+        {`Bem-vindo ao `}
         <span style={{ fontStyle: "italic", color: "#5b6977" }}>
           Sapo Alimentício
         </span>
-        , aqui você irá encontrar informações nutricional dos principais
-        alimentos do mercado.
+        {`, aqui você irá encontrar informações nutricional dos principais alimentos do mercado.`}
       </Typography>
     </Grid>
     <Grid item lg={12} align="center" style={{ marginBottom: 40 }}>
