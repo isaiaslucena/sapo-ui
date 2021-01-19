@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image'
+import Image from 'next/image';
 import { Grid, Typography, AppBar, Tabs } from "@material-ui/core";
 
 const menuItems = ["Proteínas", "Carboidratos", "Gorduras"];
@@ -9,7 +9,7 @@ const Header = () => (
     container
     justify="space-around"
     alignItems="center"
-    style={{ backgroundColor: "#8190a5" }}
+    style={{ backgroundColor: "#8190a5", borderRadius: 5 }}
   >
     <Grid item container spacing={3} alignItems="center" lg={6}>
       <Grid item>
@@ -26,15 +26,15 @@ const Header = () => (
             alignItems: "center",
           }}
         >
-          <Typography component="h4" variant="h4" style={{ color: "white" }}>
+          <Typography component="h5" variant="h5" style={{ color: "white" }}>
             Home
           </Typography>
         </div>
       </Grid>
     </Grid>
     <Grid item container spacing={3} lg={6}>
-      {menuItems.map((menuItem) => (
-        <Grid item>
+      {menuItems.map((menuItem, index) => (
+        <Grid item key={`menuItem${index}`}>
           <Typography component="h6" variant="h6" style={{ color: "white" }}>
             {menuItem}
           </Typography>
